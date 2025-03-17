@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Espacios Comunitarios App</string>
+    <string name="title_login">Espacios Comunitarios</string>
+    <string name="title_card">Bienvenidos</string>
+    <string name="button_login">Iniciar Sesión</string>
+    <string name="user_hint">Usuario</string>
+    <string name="password_hint">Contraseña</string>
+
+    //Home Activity
+    <string name="ab_name">Espacios Comunitarios</string>
+
+    //Bottom Menu
+    <string name="list_btn">Lista</string>
+    <string name="map_btn">Mapa</string>
+
+    //Detail Activity
+    <string name="day_detail">Días</string>
+    <string name="time_detail">Horarios</string>
+    <string name="address_detail">Dirección</string>
+    <string name="route_btn">Como llegar</string>
+    <string name="contact_btn">Contactar</string>
+    <string name="attendance_detail">Asistencia</string>
+    <string name="contact_detail">Referente</string>
+</resources>
