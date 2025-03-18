@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -20,6 +22,14 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    val localProperties = Properties()
+    val localPropertiesFile = File(rootDir, "secret.properties")
+    if (localPropertiesFile.exists() && localPropertiesFile.isFile) {
+        localPropertiesFile.inputStream().use {
+            localProperties.load(it)
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -27,6 +37,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "MAPS_API_KEY", localProperties.getProperty("MAPS_API_KEY"))
+            resValue("string", "MAPS_API_KEY", localProperties.getProperty("MAPS_API_KEY"))
+        }
+        debug {
+            buildConfigField("String", "MAPS_API_KEY", localProperties.getProperty("MAPS_API_KEY"))
+            resValue("string", "MAPS_API_KEY", localProperties.getProperty("MAPS_API_KEY"))
         }
     }
     compileOptions {
@@ -37,6 +53,8 @@ android {
         jvmTarget = "11"
     }
     buildFeatures {
+        resValues = true
+        buildConfig = true
         viewBinding = true
     }
 }
